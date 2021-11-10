@@ -16,7 +16,7 @@ query thoughts($username: String) {
         }
     }
 }
-`
+`;
 
 export const QUERY_THOUGHT = gql`
 query thought($id: ID!) {
@@ -34,4 +34,25 @@ query thought($id: ID!) {
         }
     }
 }
+`;
+
+export const QUERY_USER = gql`
+  query user($username: String!) {
+    user(username: $username) {
+      _id
+      username
+      email
+      friendCount
+      friends {
+        _id
+        username
+      }
+      thoughts {
+        _id
+        thoughtText
+        createdAt
+        reactionCount
+      }
+    }
+  }
 `;
